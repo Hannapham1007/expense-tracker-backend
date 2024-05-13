@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -40,7 +40,6 @@ public class UserController {
         return new ResponseEntity<>(userResponse, HttpStatus.OK);
     }
 
-    @CrossOrigin
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<?>> updateUser(@PathVariable int id, @RequestBody User user){
         if(ValidationUtils.isInvalidUser(user)){

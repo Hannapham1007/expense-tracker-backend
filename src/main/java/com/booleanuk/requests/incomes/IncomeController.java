@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/incomes")
 public class IncomeController {
@@ -54,7 +55,6 @@ public class IncomeController {
         incomeResponse.set(createIncome);
         return new ResponseEntity<>(incomeResponse, HttpStatus.CREATED);
     }
-    @CrossOrigin
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<?>> deleteIncome(@PathVariable int id){
         Income incomeToDelete = ValidationUtils.getById(id, incomeRepository);
@@ -66,7 +66,6 @@ public class IncomeController {
         incomeResponse.set(incomeToDelete);
         return ResponseEntity.ok(incomeResponse);
     }
-    @CrossOrigin
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<?>> updateIncome(@PathVariable int id, @RequestBody Income income){
         int categoryId = income.getCategory().getId();

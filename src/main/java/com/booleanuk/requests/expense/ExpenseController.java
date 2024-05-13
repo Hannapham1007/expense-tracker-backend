@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+@CrossOrigin
 @RestController
 @RequestMapping("/expenses")
 public class ExpenseController {
@@ -53,7 +54,6 @@ public class ExpenseController {
       expenseResponse.set(createExpense);
       return new ResponseEntity<>(expenseResponse, HttpStatus.CREATED);
   }
-    @CrossOrigin
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<?>> deleteExpense(@PathVariable int id){
         Expense expenseToDelete = ValidationUtils.getById(id, expenseRepository);
@@ -65,7 +65,6 @@ public class ExpenseController {
         expenseResponse.set(expenseToDelete);
         return ResponseEntity.ok(expenseResponse);
     }
-    @CrossOrigin
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<?>> updateExpense(@PathVariable int id, @RequestBody Expense expense){
         int categoryId = expense.getCategory().getId();
@@ -110,29 +109,4 @@ public class ExpenseController {
         return new ResponseEntity<>(expenseListResponse, HttpStatus.OK);
     }
 
-  /*  @CrossOrigin
-    @PostMapping("/users/{userID}")
-    public ResponseEntity<ApiResponse<?>> createExpense(@RequestBody Expense expense, @PathVariable int userID){
-        int categoryId = expense.getCategory().getId();
-
-        Category category = ValidationUtils.getById(categoryId, categoryRepository);
-        User user = ValidationUtils.getById(userID, userRepository);
-
-        if(category == null || user == null){
-            return Responses.badRequest("create", "expense");
-        }
-
-        if(ValidationUtils.isInvalidExpense(expense)){
-            return Responses.badRequest("create", "expense");
-        }
-        Expense createExpense = this.expenseRepository.save(expense);
-
-        createExpense.setCategory(category);
-        createExpense.setUser(user);
-        ExpenseResponse expenseResponse = new ExpenseResponse();
-        expenseResponse.set(createExpense);
-        return new ResponseEntity<>(expenseResponse, HttpStatus.CREATED);
-    }
-
-   */
 }
