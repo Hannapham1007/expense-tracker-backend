@@ -1,6 +1,10 @@
 # 💼 Expense board-site built with React and Java Spring Boot 
 Expense is a platform that offers expense tracking to help you take control of your finances and stay on budget. The plattform assits you in organizing your expenses and incomes into different categories and enable you to review your transactions for a specific period. 
 
+Try the Expense board-site: You can either create an account or using this test account 
+* username: react
+* password: Helloworld123
+
 Link to frontend-repo: https://github.com/Hannapham1007/expense-tracker-frontend
 
 # 🌐 View it live 
